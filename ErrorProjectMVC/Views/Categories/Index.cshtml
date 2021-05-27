@@ -1,0 +1,41 @@
+﻿@model IEnumerable<MedicalTests.Domain.Categories>
+
+@{
+    ViewBag.Title = "Категории";
+}
+
+<h2>Категории</h2>
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+@using (Html.BeginForm("Index", "Categories", FormMethod.Post))
+{
+    <button type="submit" name="action" value="ClearTable">Очистить таблицу</button>
+    <button type="submit" name="action" value="LoadTable">Заполнить таблицу</button>
+    <p>
+    </p>
+}
+<p>
+    @Html.ActionLink("Создать категорию", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameCategory)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameCategory)
+        </td>
+        <td>
+            @Html.ActionLink("Редактировать", "Edit", new { id=item.ID_Category }) |
+            @Html.ActionLink("Подробно", "Details", new { id=item.ID_Category }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.ID_Category })
+        </td>
+    </tr>
+}
+
+</table>

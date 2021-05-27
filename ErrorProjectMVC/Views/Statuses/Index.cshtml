@@ -1,0 +1,43 @@
+﻿@model IEnumerable<MedicalTests.Domain.Statuses>
+
+@{
+    ViewBag.Title = "Статусы";
+}
+
+<h2>Статусы</h2>
+
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+@using (Html.BeginForm("Index", "Statuses", FormMethod.Post))
+{
+    <button type="submit" name="action" value="ClearTable">Очистить таблицу</button>
+    <button type="submit" name="action" value="LoadTable">Заполнить таблицу</button>
+    <p>
+    </p>
+}
+<p>
+    @Html.ActionLink("Создать статус", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameStatus)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameStatus)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_Status }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.ID_Status }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_Status })
+            </td>
+        </tr>
+    }
+
+</table>

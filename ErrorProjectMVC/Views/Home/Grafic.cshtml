@@ -1,0 +1,97 @@
+﻿@model List<MedicalTestsMVC.Models.HomeViewModels.GrafikViewModel>
+
+@{
+    ViewBag.Title = "График статусов";
+}
+
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<!doctype html>
+<head>
+    @*<meta charset="utf-8">
+        <meta name="viewport" content="width=300 ">*@
+
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" crossorigin="anonymous" />
+</head>
+<body style="background-image: url(../../image/6.jpg)">
+
+
+    <table>
+        @foreach(var row in Model)
+        {
+            <tr>
+                <td>@row.Name</td>
+                <td>@row.Value</td>
+                <td><a href="/Oshibki/?StatusId=@row.StatusId">Открыть</a></td>
+            </tr>
+        }
+    </table>
+
+
+    <div style="width:600px; padding-top:10px; padding-left:30px;">
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        // Данные из контроллера
+        var gNames = @Html.Raw(Json.Encode(Model.Select(x => x.Name).ToList()));
+        var gValues = @Json.Encode(Model.Select(x => x.Value).ToList());
+
+        var chart = new Chart(ctx, {
+
+            type: 'pie',
+
+            data: {
+                labels: gNames,
+                datasets: [{
+                    label: "Диаграмма статусов",
+                    backgroundColor: @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Select(x => x.Color).ToList())),
+                    borderColor: '#fff',
+                    data: gValues @*[parseInt(@ViewBag.data)/*25,15,30*/],*@
+
+                }]
+            },
+
+            options: {
+                circumference: 1 * Math.PI,
+                rotation: 1 * Math.PI,
+                cutoutPercentage: 90,
+                tooltips: {
+
+                }
+            }
+        });
+    </script>
+
+    @*<script>
+            var ctx = document.getElementById('myChart').getContext('2d');
+
+            var chart = new Chart(ctx, {
+
+                type: 'pie',
+
+                data: {
+                    labels:@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.statuses)),
+                    datasets: [{
+                        label: "Диаграмма статусов",
+                        backgroundColor:@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.colours)),
+                        borderColor: '#fff',
+                        data: @Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.val),
+                    }]
+                },
+
+                options: {
+                    circumference: 1 * Math.PI,
+                    rotation: 1 * Math.PI,
+                    cutoutPercentage: 90
+                }
+            });
+        </script>*@
+
+</body>

@@ -1,0 +1,33 @@
+﻿@model MedicalTests.Domain.Categories
+
+@{
+    ViewBag.Title = "Delete";
+}
+    <body style="background-image: url(../../image/6.jpg)">
+    </body>
+<h2>Удаление</h2>
+
+<h3>Вы хотите удалить эту информацию?</h3>
+<div>
+    <h4>Категории</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameCategory)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

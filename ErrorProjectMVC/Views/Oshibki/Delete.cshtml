@@ -1,0 +1,105 @@
+﻿@model MedicalTests.Domain.Oshibki
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление</h2>
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+<h3>Вы хотите удалить эту информацию?</h3>
+<div>
+    <h4>Ошибки ПО</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.NameCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.ID_Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Module.NameModule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Module.NameModule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Razrabotchiki.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Razrabotchiki.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.NameStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.NameStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDetection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDetection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOver)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>

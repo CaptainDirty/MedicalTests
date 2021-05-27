@@ -1,0 +1,37 @@
+﻿@model MedicalTestsMVC.Models.RegisterExternalLoginModel
+@{
+    ViewBag.Title = "Register";
+}
+    <body style="background-image: url(../../image/6.jpg)">
+    </body>
+<hgroup class="title">
+    <h1>@ViewBag.Title.</h1>
+    <h2>Свяжите свой @ViewBag.ProviderDisplayName аккаунт.</h2>
+</hgroup>
+
+@using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Association Form</legend>
+        <p>
+            Вы успешно прошли аутентификацию с помощью <strong>@ViewBag.ProviderDisplayName</strong>.
+            Пожалуйста, введите имя пользователя для этого сайта ниже и нажмите кнопку подтверждения, чтобы завершить вход в систему.
+        </p>
+        <ol>
+            <li class="name">
+                @Html.LabelFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)
+                @Html.ValidationMessageFor(m => m.UserName)
+            </li>
+        </ol>
+        @Html.HiddenFor(m => m.ExternalLoginData)
+        <input type="submit" value="Регистрация" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

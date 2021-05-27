@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Документирование ошибок программного обеспечения</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body style="background-image: url(../../image/6.jpg)">
+
+    <div>
+        <p>Система документирования ошибок программного обеспечения</p>
+    </div>
+    <header>
+        @*<div id="side_menu">
+            <ul>
+                @Html.ActionLink("Главная", "Index", "Home", new { id = 0 }, null)
+                @Html.ActionLink("Личный кабинет", "Cabinet", "Home")
+                @Html.ActionLink("О программе", "About", "Home")
+            </ul>
+            <div style="border-bottom: 1px solid rgb(218, 225, 232); margin: 5px"></div>
+            <ul>
+                @Html.ActionLink("Контакты", "Contact", "Home")
+            </ul>
+            <div style="border-bottom: 1px solid rgb(218, 225, 232); margin: 5px"></div>
+            <ul>
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+            </ul>
+        </div>*@
+
+        <style type="text/css">
+            TABLE {
+                /*background: black;*/ /* Цвет фона таблицы */
+                color: black; /* Цвет текста */
+            }
+
+            TD, TH {
+                /*background: white ;*/ /* Цвет фона ячеек */
+                padding: 5px; /* Поля вокруг текста */
+            }
+        </style>
+
+        <div class="content-wrapper">
+            <div class="float-right">
+
+                <nav>
+                    <table width="100%" id="menu">
+                        <tr>
+                            <td>
+                                <ul>
+                                    @Html.ActionLink("Главная", "Index", "Home")
+                                </ul>
+                            </td>
+                            <td >
+                                <ul>
+                                    @Html.ActionLink("Личный кабинет", "Cabinet", "Home")
+                                </ul>
+                            </td>
+                            <td >
+                                <ul>
+                                    @Html.ActionLink("О программе", "About", "Home")
+                                </ul>
+                            </td>
+                            <td @*width="90%"*@>
+                                <ul>
+                                    @Html.ActionLink("Контакты", "Contact", "Home")
+                                </ul>
+                            </td>
+                            <td align="left">
+                                <section id="login">
+                                    @Html.Partial("_LoginPartial")
+                                </section>
+                            </td>
+                        </tr>
+                    </table>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+            @RenderSection("featured", required: false)
+            @RenderSection("scripts", required: false)
+        </section>
+    </div>
+    <div>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Кафедра "Теплофизика и информатика в металлургии" УрФУ, г. Екатеринбург</p>
+    </footer>
+    </div>
+</body>
+</html>

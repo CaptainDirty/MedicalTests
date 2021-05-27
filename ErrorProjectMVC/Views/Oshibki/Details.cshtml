@@ -1,0 +1,106 @@
+﻿@model MedicalTests.Domain.Oshibki
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Подробно</h2>
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ID_Oshibki)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ID_Oshibki)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.NameCategory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.NameCategory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Module.NameModule)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Module.NameModule)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Razrabotchiki.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Razrabotchiki.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status.NameStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status.NameStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.UserName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Topic)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Topic)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateDetection)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateDetection)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateStart)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateOver)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ID_Oshibki }) |
+    @Html.ActionLink("Назад", "Index")
+</p>

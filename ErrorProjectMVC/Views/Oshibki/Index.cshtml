@@ -1,0 +1,129 @@
+﻿@model IEnumerable<MedicalTests.Domain.Oshibki>
+
+@{
+    ViewBag.Title = "Данные об ошибках";
+}
+
+@ViewBag.MessageTest
+
+<h2>Данные об ошибках</h2>
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+
+<p>
+    @Html.ActionLink("Добавить ошибку", "Create")
+</p>
+
+@using (Html.BeginForm("Index", "Oshibki", FormMethod.Post))
+{
+
+    @Html.AntiForgeryToken()
+    <form method="post">
+        <div class=" form-inline">
+            <h2>Выберите один из пунктов и нажмите кнопку "Фильтр"!</h2>
+            <label class=" control-label">Модули: </label>
+            @Html.DropDownList("ID_Module", null, "Все",
+               htmlAttributes: new { @class = "form-control" })
+            <label class=" control-label"> или Категории: </label>
+            @Html.DropDownList("ID_Category", null, "Все",
+              htmlAttributes: new { @class = "form-control" })
+            <label class=" control-label"> или Разработчики: </label>
+            @Html.DropDownList("ID_Razrabotchik", null, "Все",
+              htmlAttributes: new { @class = "form-control" })
+            <label class=" control-label">  или Статусы: </label>
+            @Html.DropDownList("ID_Status", null, "Все",
+              htmlAttributes: new { @class = "form-control" })
+
+
+            <button type="submit" name="action" value="filter">Фильтр</button>
+            <button type="submit" name="action" value="excel">Excel</button>
+
+        </div>
+    </form>
+
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID_Oshibki)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Category.NameCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Module.NameModule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Razrabotchiki.Surname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status.NameStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Topic)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDetection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateStart)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOver)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <th>
+                @Html.DisplayFor(modelItem => item.ID_Oshibki)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.NameCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Module.NameModule)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Razrabotchiki.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status.NameStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.User.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Topic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateDetection)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateStart)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOver)
+            </td>
+            <td>
+                @Html.ActionLink("Редактировать", "Edit", new { id = item.ID_Oshibki }) |
+                @Html.ActionLink("Подробно", "Details", new { id = item.ID_Oshibki }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ID_Oshibki })
+            </td>
+        </tr>
+    }
+</table>
+

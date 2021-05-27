@@ -1,0 +1,57 @@
+﻿@model MedicalTests.Domain.Razrabotchiki
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Удаление</h2>
+<body style="background-image: url(../../image/6.jpg)">
+</body>
+<h3>Вы хотите удалить эту информацию?</h3>
+<div>
+    <h4>Разработчики</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Surname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Surname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Thirdname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Thirdname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateBirth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateBirth)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Удалить" class="btn btn-default" /> |
+            @Html.ActionLink("Назад", "Index")
+        </div>
+    }
+</div>
